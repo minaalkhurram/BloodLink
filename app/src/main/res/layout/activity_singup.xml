@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/lightbg"
-    tools:context=".singupActivity">
+    tools:context=".signupActivity">
 
 
     <ImageView
@@ -19,8 +19,58 @@
 
     </ImageView>
 
-    <android>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/montserrat_light"
+        android:gravity="center_horizontal"
+        android:text="Sign Up"
+        android:textSize="34sp"
+        android:textColor="@color/textRed"
+        android:textStyle="bold">
 
-    </android>
+    </TextView>
 
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/montserrat_light"
+        android:hint="Enter Username"
+        android:layout_marginTop="80px"
+        android:layout_marginRight="10px"
+        android:inputType="text"
+        android:layout_marginLeft="10px"
+        android:textColor="@color/textRed">
+
+    </EditText>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/montserrat_light"
+        android:hint="Enter Password"
+        android:layout_margin="10px"
+       android:inputType="textPassword"
+        android:textColor="@color/textRed">
+
+    </EditText>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/montserrat_light"
+        android:hint="Enter Contact Number"
+        android:layout_margin="10px"
+        android:inputType="phone"
+        android:textColor="@color/textRed">
+
+    </EditText>
+
+
+    <Spinner
+        android:id="@+id/bloodTypeSpinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10px"
+        android:padding="5px"
+        android:backgroundTint="@color/dustyrose"
+        android:clickable="true" />
 </LinearLayout>
