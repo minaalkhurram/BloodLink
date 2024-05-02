@@ -20,18 +20,16 @@
     </ImageView>
 
 
-
     <EditText
         android:id="@+id/userTxt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
-        android:textColor="@color/textRed"
         android:layout_marginTop="50dp"
         android:layout_marginRight="10dp"
-        android:fontFamily="monospace"
+        android:fontFamily="@font/montserrat_light"
         android:hint="Enter Username "
-        >
+        android:textColor="@color/textRed">
 
     </EditText>
 
@@ -42,11 +40,10 @@
         android:layout_marginLeft="10dp"
         android:layout_marginTop="40dp"
         android:layout_marginRight="10dp"
-        android:fontFamily="monospace"
-        android:textColor="@color/textRed"
-        android:inputType="textPassword"
+        android:fontFamily="@font/montserrat_light"
         android:hint="Enter Password "
-        >
+        android:inputType="textPassword"
+        android:textColor="@color/textRed">
 
     </EditText>
 
@@ -58,7 +55,7 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="10dp"
         android:backgroundTint="@color/textRed"
-        android:fontFamily="monospace"
+        android:fontFamily="@font/montserrat_light"
         android:text="Log In"
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
@@ -71,7 +68,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="50dp"
-        android:fontFamily="monospace"
+        android:fontFamily="@font/montserrat_light"
         android:text="No Account yet? "
         android:textAlignment="center"
         android:textColor="@color/lightred"
@@ -86,7 +83,7 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="10dp"
         android:backgroundTint="@color/textRed"
-        android:fontFamily="monospace"
+        android:fontFamily="@font/montserrat_light"
         android:text="Sign Up"
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
