@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
@@ -8,5 +8,188 @@
     android:background="@color/lightbg"
     tools:context=".homepage">
 
+    <ScrollView
+        android:id="@+id/scroll_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/bottom_navigation">
 
-</ScrollView>
+        <!-- Content inside the ScrollView -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat_light"
+                android:padding="16dp"
+ android:background="@color/dustyrose"
+                android:text="username"
+                android:textSize="18sp" />
+            <ImageView
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:src="@drawable/logo2"
+                android:layout_gravity="center_horizontal"
+                >
+
+
+            </ImageView>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat_light"
+                    android:text="Choose your blood type : "
+                    android:textColor="@color/textRed"
+                    android:layout_marginTop="50dp"
+                    android:textSize="15sp">
+
+                </TextView>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/typAplusbtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:backgroundTint="@color/lightred2"
+                    android:fontFamily="@font/montserrat_light"
+                    android:paddingTop="5dp"
+                    android:text="Type : A+ "
+                    android:textAlignment="viewStart"
+                    android:textColor="@color/lightbg"
+                    android:textSize="20dp"
+                    app:cornerRadius="20dp" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/typeAminusbtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:backgroundTint="@color/lightred2"
+                    android:fontFamily="@font/montserrat_light"
+                    android:paddingTop="5dp"
+                    android:text="Type : A- "
+                    android:textAlignment="viewStart"
+                    android:textColor="@color/lightbg"
+                    android:textSize="20dp"
+                    app:cornerRadius="20dp" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/typeBplusbtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:backgroundTint="@color/lightred2"
+                    android:fontFamily="@font/montserrat_light"
+                    android:paddingTop="5dp"
+                    android:text="Type : B+ "
+                    android:textAlignment="viewStart"
+                    android:textColor="@color/lightbg"
+                    android:textSize="20dp"
+                    app:cornerRadius="20dp" />
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/typeBminusbtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:backgroundTint="@color/lightred2"
+                    android:fontFamily="@font/montserrat_light"
+                    android:paddingTop="5dp"
+                    android:text="Type : B- "
+                    android:textAlignment="viewStart"
+                    android:textColor="@color/lightbg"
+                    android:textSize="20dp"
+                    app:cornerRadius="20dp" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/typeOplusbtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:backgroundTint="@color/lightred2"
+                    android:fontFamily="@font/montserrat_light"
+                    android:paddingTop="5dp"
+                    android:text="Type : O+ "
+                    android:textAlignment="viewStart"
+                    android:textColor="@color/lightbg"
+                    android:textSize="20dp"
+                    app:cornerRadius="20dp" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/typeOminusbtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:backgroundTint="@color/lightred2"
+                    android:fontFamily="@font/montserrat_light"
+                    android:paddingTop="5dp"
+                    android:text="Type : O- "
+                    android:textAlignment="viewStart"
+                    android:textColor="@color/lightbg"
+                    android:textSize="20dp"
+                    app:cornerRadius="20dp" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/typeABplusbtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:backgroundTint="@color/lightred2"
+                    android:fontFamily="@font/montserrat_light"
+                    android:paddingTop="5dp"
+                    android:text="Type : AB+ "
+                    android:textAlignment="viewStart"
+                    android:textColor="@color/lightbg"
+                    android:textSize="20dp"
+                    app:cornerRadius="20dp" />
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/typeABminusbtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:backgroundTint="@color/lightred2"
+                    android:fontFamily="@font/montserrat_light"
+                    android:paddingTop="5dp"
+                    android:text="Type : AB- "
+                    android:textAlignment="viewStart"
+                    android:textColor="@color/lightbg"
+                    android:textSize="20dp"
+                    app:cornerRadius="20dp" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <!-- Bottom navigation bar -->
+    <LinearLayout
+        android:id="@+id/bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/lightred"
+        android:padding="5px"
+
+      >
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/lightred"
+            android:src="@drawable/accounticon"
+            android:layout_margin="5px"
+            app:tint="@color/lightbg">
+
+        </ImageButton>
+
+    </LinearLayout>
+
+</RelativeLayout>
