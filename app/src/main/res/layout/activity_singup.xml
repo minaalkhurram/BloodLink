@@ -37,9 +37,9 @@
         android:fontFamily="@font/montserrat_light"
         android:hint="Enter Username"
         android:layout_marginTop="80px"
-        android:layout_marginRight="10px"
+        android:layout_marginRight="15px"
         android:inputType="text"
-        android:layout_marginLeft="10px"
+        android:layout_marginLeft="15px"
         android:textColor="@color/textRed">
 
     </EditText>
@@ -48,7 +48,10 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/montserrat_light"
         android:hint="Enter Password"
-        android:layout_margin="10px"
+
+        android:layout_marginTop="40px"
+        android:layout_marginRight="15px"
+        android:layout_marginLeft="15px"
        android:inputType="textPassword"
         android:textColor="@color/textRed">
 
@@ -58,18 +61,89 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/montserrat_light"
         android:hint="Enter Contact Number"
-        android:layout_margin="10px"
+        android:layout_marginTop="40px"
+        android:layout_marginRight="15px"
+        android:layout_marginLeft="15px"
         android:inputType="phone"
         android:textColor="@color/textRed">
 
     </EditText>
 
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/montserrat_light"
+        android:hint="Enter Age"
+        android:layout_marginTop="40px"
+        android:layout_marginRight="15px"
+        android:layout_marginLeft="15px"
+        android:inputType="number"
+        android:textColor="@color/textRed">
 
+    </EditText>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20px"
+        android:fontFamily="@font/montserrat_light"
+        android:text="Do you have any allergies/past medical diseses?"
+        android:textColor="@color/textRed"
+        android:textSize="15sp">
+
+    </TextView>
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+<LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_marginLeft="250px"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+    <RadioButton
+        android:id="@+id/radioButton1"
+        android:layout_width="wrap_content"
+
+        android:layout_height="wrap_content"
+        android:layout_margin="40px"
+        android:fontFamily="@font/montserrat_light"
+        android:text="Yes "
+        android:textColor="@color/textRed" />
+
+    <RadioButton
+        android:id="@+id/radioButton2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="40px"
+        android:fontFamily="@font/montserrat_light"
+        android:text="No"
+        android:textColor="@color/textRed" />
+
+        </LinearLayout>
+
+        <!-- Add more radio buttons as needed -->
+
+    </RadioGroup>
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/montserrat_light"
+        android:layout_margin="20px"
+        android:text=" Please select your blood type : "
+        android:textColor="@color/textRed"
+        android:textSize="15sp">
+
+    </TextView>
     <Spinner
         android:id="@+id/bloodTypeSpinner"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10px"
+
+        android:layout_marginTop="50px"
         android:padding="5px"
         android:backgroundTint="@color/dustyrose"
         android:clickable="true" />
