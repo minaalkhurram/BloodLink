@@ -21,14 +21,14 @@
 
 
     <EditText
-        android:id="@+id/userTxt"
+        android:id="@+id/mailTxt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="50dp"
         android:layout_marginRight="10dp"
         android:fontFamily="@font/montserrat_light"
-        android:hint="Enter Username "
+        android:hint="Enter Email "
         android:textColor="@color/textRed">
 
     </EditText>
@@ -77,7 +77,7 @@
     </TextView>
 
     <Button
-        android:id="@+id/singUpbtn"
+        android:id="@+id/signUpbtn"
         android:layout_width="192dp"
         android:layout_height="58dp"
         android:layout_gravity="center_horizontal"

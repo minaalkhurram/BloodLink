@@ -1,23 +1,56 @@
 package com.example.bloodlink;
 
+import static android.content.ContentValues.TAG;
+
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-public class signupActivity extends AppCompatActivity {
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
+public class signupActivity extends AppCompatActivity {
+EditText emailtxt,passtxt, contacttxt, agetxt,usernametxt;
+Button submitBtn;
+
+RadioGroup myRg;
+RadioButton btnYes,btnNo;
+
+Spinner mySpinner;
+
+FirebaseDatabase FBdatabase;
+DatabaseReference dbReference;
+
+boolean YesBtn;
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_singup);
+
+        init();
+
         Spinner bloodTypeSpinner = findViewById(R.id.bloodTypeSpinner);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
                 this,
@@ -26,10 +59,78 @@ public class signupActivity extends AppCompatActivity {
         );
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         bloodTypeSpinner.setAdapter(adapter);
+
+        RadioGroup myRg = findViewById(R.id.radioGroup);
+        /* myRg.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                // Check which radio button is selected
+                if (checkedId == R.id.radioButton1) {
+                    YesBtn = true;
+                } else if (checkedId == R.id.radioButton2) {
+                    YesBtn = false;
+                }
+            }
+        });
+*/
+        submitBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FBdatabase=FirebaseDatabase.getInstance();
+                dbReference=FBdatabase.getReference("user");
+
+                String email=emailtxt.getText().toString();
+                String username=usernametxt.getText().toString();
+                String password=passtxt.getText().toString();
+                String bloodtype=mySpinner.getSelectedItem().toString();
+                String ageString = agetxt.getText().toString();
+                int  age = Integer.parseInt(ageString);
+                String contactString = contacttxt.getText().toString();
+                long contactNumber = Long.parseLong(contactString);
+
+                Users newUser= new Users(email,username,"A+",password,false,age,contactNumber);
+                dbReference.child(username).setValue(newUser).addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void aVoid) {
+                                // Operation succeeded
+                                Toast.makeText(signupActivity.this, "User data added successfully", Toast.LENGTH_SHORT).show();
+
+                                Intent intent=new Intent(signupActivity.this, loginActivity.class);
+                                startActivity(intent);
+                                finish();
+                            }
+                        })
+                        .addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                // Operation failed
+                                Toast.makeText(signupActivity.this, "Failed to add user data: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                            }
+                        });
+            }
+        });
+
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+    }
+
+
+    public void init()
+    {
+        emailtxt=findViewById(R.id.emailtxt);
+        passtxt=findViewById(R.id.passtxt);
+        submitBtn=findViewById(R.id.submitbtn);
+        agetxt=findViewById(R.id.ageTxt);
+        contacttxt=findViewById(R.id.Cntxt);
+        mySpinner=findViewById(R.id.bloodTypeSpinner);
+        myRg=findViewById(R.id.radioGroup);
+        btnYes=findViewById(R.id.radioButton1);
+        btnNo=findViewById(R.id.radioButton2);
+        usernametxt=findViewById(R.id.usernametxt);
+
+
     }
 }
