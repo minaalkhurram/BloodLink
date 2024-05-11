@@ -1,6 +1,9 @@
 package com.example.bloodlink;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Button;
+import android.widget.EditText;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -9,6 +12,11 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 public class homepage extends AppCompatActivity {
+
+    EditText usernameTxt;
+    String username,email;
+
+    Button Aplusbtn,Aminusbtn,Bplusbtn,Bminusbtn,Oplusbtn,Ominusbtn,ABplusbtn,ABminusbtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,4 +31,36 @@ public class homepage extends AppCompatActivity {
             return insets;
         });
     }
+
+    public void init()
+    {
+        usernameTxt=findViewById(R.id.usernametxt);
+        Aplusbtn=findViewById(R.id.typeAplusbtn);
+        Aminusbtn=findViewById(R.id.typeAminusbtn);
+        Bplusbtn=findViewById(R.id.typeBplusbtn);
+        Bminusbtn=findViewById(R.id.typeBminusbtn);
+        Oplusbtn=findViewById(R.id.typeOplusbtn);
+        Ominusbtn=findViewById(R.id.typeOminusbtn);
+        ABplusbtn=findViewById(R.id.typeABplusbtn);
+        ABminusbtn=findViewById(R.id.typeABminusbtn);
+
+
+    }
+    public void getExtra()
+    {
+        Intent intent = getIntent();
+
+        // Check if Intent contains extras
+        if (intent != null && intent.getExtras() != null) {
+            // Retrieve username and email from the Intent
+            username = intent.getStringExtra("username");
+            email = intent.getStringExtra("email");
+            usernameTxt.setText(username);
+
+
+
+        }
+
+    }
+
 }

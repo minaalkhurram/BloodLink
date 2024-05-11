@@ -22,11 +22,12 @@
 
 
             <TextView
+                android:id="@+id/usernameTxt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@color/dustyrose"
                 android:fontFamily="@font/montserrat_light"
                 android:padding="16dp"
- android:background="@color/dustyrose"
                 android:text="username"
                 android:textSize="18sp" />
             <ImageView
@@ -56,7 +57,7 @@
                 </TextView>
 
                 <com.google.android.material.button.MaterialButton
-                    android:id="@+id/typAplusbtn"
+                    android:id="@+id/typeAplusbtn"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
