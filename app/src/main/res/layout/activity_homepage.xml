@@ -192,6 +192,17 @@
 
         </ImageButton>
 
+        <ImageButton
+            android:id="@+id/chatbtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5px"
+            android:backgroundTint="@color/lightred"
+            android:src="@drawable/accounticon"
+            app:tint="@color/lightbg">
+
+        </ImageButton>
+
     </LinearLayout>
 
 </RelativeLayout>
