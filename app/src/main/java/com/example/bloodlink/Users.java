@@ -1,11 +1,12 @@
 package com.example.bloodlink;
 
 public class Users {
-  private   String user;
+  private   String username;
+
+
 
   private String email;
   private  String bloodType;
-
   private String password;
 
   private long conatactNum;
@@ -14,13 +15,8 @@ public class Users {
 
   private int age;
 
-Users(){
-  //default constructor
-}
-
-
   Users(String mail,String u , String bt, String pass, Boolean md, int age, long cn){
-    this.user=u;
+    this.username=u;
     this.bloodType=bt;
     this.password=pass;
     this.medicalDisease=md;
@@ -37,7 +33,7 @@ Users(){
 
   public String getUser()
   {
-    return this.user;
+    return this.username;
   }
 
   public String getPassword()
