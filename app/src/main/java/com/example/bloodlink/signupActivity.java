@@ -1,10 +1,7 @@
 package com.example.bloodlink;
 
-import static android.content.ContentValues.TAG;
-
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -21,14 +18,13 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class signupActivity extends AppCompatActivity {
 EditText emailtxt,passtxt, contacttxt, agetxt,usernametxt;
@@ -42,12 +38,12 @@ Spinner mySpinner;
 FirebaseDatabase FBdatabase;
 DatabaseReference dbReference;
 
-boolean YesBtn;
+boolean YesBtn=false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_singup);
+        setContentView(R.layout.activity_signup);
 
         init();
 
@@ -61,7 +57,7 @@ boolean YesBtn;
         bloodTypeSpinner.setAdapter(adapter);
 
         RadioGroup myRg = findViewById(R.id.radioGroup);
-        /* myRg.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+        myRg.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 // Check which radio button is selected
@@ -72,41 +68,64 @@ boolean YesBtn;
                 }
             }
         });
-*/
+
         submitBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FBdatabase=FirebaseDatabase.getInstance();
-                dbReference=FBdatabase.getReference("user");
+                // Firebase initialization
+                FBdatabase = FirebaseDatabase.getInstance();
+                dbReference = FBdatabase.getReference("user");
 
-                String email=emailtxt.getText().toString();
-                String username=usernametxt.getText().toString();
-                String password=passtxt.getText().toString();
-                String bloodtype=mySpinner.getSelectedItem().toString();
+                // Get user input values
+                String email = emailtxt.getText().toString();
+                String username = usernametxt.getText().toString();
+                String password = passtxt.getText().toString();
+                String bloodtype = mySpinner.getSelectedItem().toString();
                 String ageString = agetxt.getText().toString();
-                int  age = Integer.parseInt(ageString);
+                int age = Integer.parseInt(ageString);
                 String contactString = contacttxt.getText().toString();
                 long contactNumber = Long.parseLong(contactString);
 
-                Users newUser= new Users(email,username,"A+",password,false,age,contactNumber);
-                dbReference.child(username).setValue(newUser).addOnSuccessListener(new OnSuccessListener<Void>() {
-                            @Override
-                            public void onSuccess(Void aVoid) {
-                                // Operation succeeded
-                                Toast.makeText(signupActivity.this, "User data added successfully", Toast.LENGTH_SHORT).show();
+                // Check if the username already exists
+                dbReference.child(username).addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        if (snapshot.exists()) {
 
-                                Intent intent=new Intent(signupActivity.this, loginActivity.class);
-                                startActivity(intent);
-                                finish();
-                            }
-                        })
-                        .addOnFailureListener(new OnFailureListener() {
-                            @Override
-                            public void onFailure(@NonNull Exception e) {
-                                // Operation failed
-                                Toast.makeText(signupActivity.this, "Failed to add user data: " + e.getMessage(), Toast.LENGTH_SHORT).show();
-                            }
-                        });
+                            Toast.makeText(signupActivity.this, "Username already exists", Toast.LENGTH_SHORT).show();
+                        } else {
+
+                            Users newUser = new Users(email, username, bloodtype, password, YesBtn, age, contactNumber);
+
+                            dbReference.child(username).setValue(newUser)
+                                    .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                        @Override
+                                        public void onSuccess(Void aVoid) {
+                                            // Operation succeeded
+                                            Toast.makeText(signupActivity.this, "User data added successfully", Toast.LENGTH_SHORT).show();
+
+                                            // Navigate to login activity
+                                            Intent intent = new Intent(signupActivity.this, loginActivity.class);
+                                            startActivity(intent);
+                                            finish();
+                                        }
+                                    })
+                                    .addOnFailureListener(new OnFailureListener() {
+                                        @Override
+                                        public void onFailure(@NonNull Exception e) {
+                                            // Operation failed
+                                            Toast.makeText(signupActivity.this, "Failed to add user data: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                                        }
+                                    });
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                        // Error handling
+                        Toast.makeText(signupActivity.this, "Error checking username: " + error.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                });
             }
         });
 
@@ -130,7 +149,6 @@ boolean YesBtn;
         btnYes=findViewById(R.id.radioButton1);
         btnNo=findViewById(R.id.radioButton2);
         usernametxt=findViewById(R.id.usernametxt);
-
 
     }
 }

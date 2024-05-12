@@ -115,12 +115,10 @@
     <RadioGroup
         android:id="@+id/radioGroup"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-<LinearLayout
-    android:layout_width="wrap_content"
-    android:layout_marginLeft="250px"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center_horizontal">
+
 
     <RadioButton
         android:id="@+id/radioButton1"
@@ -143,7 +141,7 @@
         android:text="No"
         android:textColor="@color/textRed" />
 
-        </LinearLayout>
+
 
         <!-- Add more radio buttons as needed -->
 

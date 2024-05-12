@@ -36,7 +36,6 @@ public class loginActivity extends AppCompatActivity {
 
     EditText mailTxt,passTxt;
     Button loginBtn,signupBtn;
-
     FirebaseDatabase FBdatabase;
     DatabaseReference dbReference;
 
@@ -63,6 +62,7 @@ public class loginActivity extends AppCompatActivity {
 
                 if(!validateEmail()&&!validatePassword())
                 {
+                    Toast.makeText(loginActivity.this, "Please fill all fields ", Toast.LENGTH_SHORT).show();
 
                 }
                 else {
@@ -125,9 +125,13 @@ public class loginActivity extends AppCompatActivity {
                 if (snapshot.exists()) {
                     for (DataSnapshot userSnapshot : snapshot.getChildren()) {
                         String passDb = userSnapshot.child("password").getValue(String.class);
+                        String username = userSnapshot.getKey();
                         if (passDb != null && passDb.equals(pass)) {
-                            // Password matches, log the user in
+
                             Intent intent = new Intent(loginActivity.this, homepage.class);
+
+
+                            intent.putExtra("username",username);
                             startActivity(intent);
                             finish();
                         } else {
