@@ -125,13 +125,13 @@ public class loginActivity extends AppCompatActivity {
                 if (snapshot.exists()) {
                     for (DataSnapshot userSnapshot : snapshot.getChildren()) {
                         String passDb = userSnapshot.child("password").getValue(String.class);
-                        String username = userSnapshot.child("username").getValue(String.class);
+                        String username = userSnapshot.getKey();
                         if (passDb != null && passDb.equals(pass)) {
-                            // Password matches, log the user in
+
                             Intent intent = new Intent(loginActivity.this, homepage.class);
 
-                            intent.putExtra("username", username);
-                            intent.putExtra("email", myemail);
+
+                            intent.putExtra("username",username);
                             startActivity(intent);
                             finish();
                         } else {

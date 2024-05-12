@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="140dp"
+    android:layout_margin="20dp"
+    android:background="@color/lightred2">
+
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="300dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+
+            android:padding="15dp">
+
+
+            <TextView
+                android:id="@+id/usernametxt"
+                android:textColor="@color/lightbg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+
+                android:drawablePadding="20dp"
+                android:fontFamily="@font/montserrat_light"
+
+                android:text="Username  "
+                android:textSize="20sp"
+                android:typeface="monospace">
+
+            </TextView>
+
+            <TextView
+                android:id="@+id/bloodtypetxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:textColor="@color/lightbg"
+                android:drawablePadding="20dp"
+                android:fontFamily="@font/montserrat_light"
+                android:text="Blood type"
+                android:textSize="15sp"
+                android:typeface="monospace">
+
+            </TextView>
+
+            <TextView
+                android:id="@+id/medDiseasetxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:textColor="@color/lightbg"
+                android:drawablePadding="20dp"
+                android:fontFamily="@font/montserrat_light"
+                android:text="MH "
+                android:textSize="14sp"
+                android:typeface="monospace">
+
+            </TextView>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:padding="30px"
+            android:orientation="vertical">
+
+
+            <ImageButton
+                android:id="@+id/callbtn"
+                android:layout_width="wrap_content"
+
+                android:layout_height="wrap_content"
+              >
+
+            </ImageButton>
+
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Call"
+                android:textColor="@color/lightbg"
+                android:textAlignment="center"
+
+                android:textSize="10dp">
+
+            </TextView>
+
+
+            <ImageButton
+                android:id="@+id/chatbtn"
+                android:layout_width="wrap_content"
+
+                android:layout_height="wrap_content"
+                >
+
+            </ImageButton>
+
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Chat"
+                android:textAlignment="center"
+                android:textColor="@color/lightbg"
+                android:textSize="10dp">
+
+            </TextView>
+
+
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>
