@@ -10,19 +10,25 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import android.animation.ObjectAnimator;
+import android.widget.ImageView;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 
 public class splashActivity extends AppCompatActivity {
-    private static final int SPLASH_DURATION = 4000;
+    private static final int SPLASH_DURATION = 5000;
+    private ImageView logoImageView;
+
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
-        new Handler().postDelayed(new Runnable()
-        {
+        logoImageView = findViewById(R.id.logoImageView);
+        Animation slideInAnimation = AnimationUtils.loadAnimation(this, R.anim.slide_in_from_right);
+        logoImageView.startAnimation(slideInAnimation);
+        new Handler().postDelayed(new Runnable() {
             @Override
-            public void run()
-            {
+            public void run() {
                 Intent intent = new Intent(splashActivity.this, loginActivity.class);
                 startActivity(intent);
                 finish();

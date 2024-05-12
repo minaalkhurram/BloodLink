@@ -3,8 +3,6 @@ package com.example.bloodlink;
 public class Users {
   private   String username;
 
-
-
   private String email;
   private  String bloodType;
   private String password;
