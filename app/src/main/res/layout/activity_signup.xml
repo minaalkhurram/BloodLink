@@ -83,7 +83,7 @@
         android:layout_marginRight="15px"
         android:fontFamily="@font/montserrat_light"
         android:hint="Enter Contact Number"
-        android:inputType="phone"
+        android:inputType="number"
         android:textColor="@color/textRed">
 
     </EditText>

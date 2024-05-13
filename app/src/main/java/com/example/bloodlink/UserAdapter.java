@@ -51,6 +51,8 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
             usernameTxt = itemView.findViewById(R.id.usernametxt);
             bloodTypeTxt = itemView.findViewById(R.id.bloodtypetxt);
             medTxt = itemView.findViewById(R.id.medDiseasetxt);
+            chatBtn=itemView.findViewById(R.id.chatbtn);
+            callBtn=itemView.findViewById(R.id.callbtn);
         }
 
         public void bind(Users user) {
@@ -58,7 +60,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
             String bt="Blood Type : "+user.getBloodType();
             bloodTypeTxt.setText(bt);
             String md="Medical Disease : "+user.getmedicalDisease();
-            medTxt.setText(String.valueOf(md));
+            medTxt.setText(md);
 
 
             callBtn.setOnClickListener(new View.OnClickListener() {
@@ -71,16 +73,10 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
                 }
             });
 
-            // Set click listener for chat button
-            chatBtn.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
 
-                  /*  Intent chatIntent = new Intent(context, chatActivity.class);
 
-                    context.startActivity(chatIntent);*/
-                }
-            });
+
         }
     }
 }
+

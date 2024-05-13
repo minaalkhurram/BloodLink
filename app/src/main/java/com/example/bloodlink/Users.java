@@ -1,9 +1,7 @@
 package com.example.bloodlink;
 
 public class Users {
-  private   String username;
-
-
+  private   String user;
 
   private String email;
   private  String bloodType;
@@ -15,8 +13,13 @@ public class Users {
 
   private int age;
 
+    Users()
+    {
+      //constructor for firebaseee
+    }
+
   Users(String mail,String u , String bt, String pass, Boolean md, int age, long cn){
-    this.username=u;
+    this.user =u;
     this.bloodType=bt;
     this.password=pass;
     this.medicalDisease=md;
@@ -33,7 +36,7 @@ public class Users {
 
   public String getUser()
   {
-    return this.username;
+    return this.user;
   }
 
   public String getPassword()

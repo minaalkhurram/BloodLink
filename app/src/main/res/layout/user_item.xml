@@ -71,19 +71,19 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:padding="10px"
+
             android:orientation="vertical">
 
 
             <ImageButton
                 android:id="@+id/callbtn"
                 android:layout_width="wrap_content"
-                android:src="@drawable/callicon"
-                android:backgroundTint="@color/lightred"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
+                android:layout_gravity="center_vertical"
+                android:backgroundTint="@color/lightred"
 
-              >
+
+                android:src="@drawable/callicon">
 
             </ImageButton>
 
@@ -94,7 +94,7 @@
                 android:layout_width="wrap_content"
                 android:src="@drawable/chaticon"
                 android:backgroundTint="@color/lightred"
-                android:layout_margin="10dp"
+                android:layout_gravity="center_vertical"
                 android:layout_height="wrap_content"
                 >
 

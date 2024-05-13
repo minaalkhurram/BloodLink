@@ -2,6 +2,7 @@ package com.example.bloodlink;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -82,51 +83,71 @@ boolean YesBtn=false;
                 String password = passtxt.getText().toString();
                 String bloodtype = mySpinner.getSelectedItem().toString();
                 String ageString = agetxt.getText().toString();
-                int age = Integer.parseInt(ageString);
+
                 String contactString = contacttxt.getText().toString();
+                if (TextUtils.isEmpty(email) || TextUtils.isEmpty(username) || TextUtils.isEmpty(password) ||
+                        TextUtils.isEmpty(bloodtype) || TextUtils.isEmpty(ageString) || TextUtils.isEmpty(contactString)) {
+                    Toast.makeText(signupActivity.this, "Please fill in all fields", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if (!isValidEmail(email)) {
+                    Toast.makeText(signupActivity.this, "Please enter a valid email address", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                int age = Integer.parseInt(ageString);
+                if (age <= 0 || age >= 200) {
+                    Toast.makeText(signupActivity.this, "Please enter a valid age ", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
                 long contactNumber = Long.parseLong(contactString);
 
-                // Check if the username already exists
-                dbReference.child(username).addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        if (snapshot.exists()) {
 
-                            Toast.makeText(signupActivity.this, "Username already exists", Toast.LENGTH_SHORT).show();
-                        } else {
+                    // Check if the username already exists
+                    dbReference.child(username).addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            if (snapshot.exists()) {
 
-                            Users newUser = new Users(email, username, bloodtype, password, YesBtn, age, contactNumber);
+                                Toast.makeText(signupActivity.this, "Username already exists", Toast.LENGTH_SHORT).show();
+                            } else {
 
-                            dbReference.child(username).setValue(newUser)
-                                    .addOnSuccessListener(new OnSuccessListener<Void>() {
-                                        @Override
-                                        public void onSuccess(Void aVoid) {
-                                            // Operation succeeded
-                                            Toast.makeText(signupActivity.this, "User data added successfully", Toast.LENGTH_SHORT).show();
+                                Users newUser = new Users(email, username, bloodtype, password, YesBtn, age, contactNumber);
 
-                                            // Navigate to login activity
-                                            Intent intent = new Intent(signupActivity.this, loginActivity.class);
-                                            startActivity(intent);
-                                            finish();
-                                        }
-                                    })
-                                    .addOnFailureListener(new OnFailureListener() {
-                                        @Override
-                                        public void onFailure(@NonNull Exception e) {
-                                            // Operation failed
-                                            Toast.makeText(signupActivity.this, "Failed to add user data: " + e.getMessage(), Toast.LENGTH_SHORT).show();
-                                        }
-                                    });
+                                dbReference.child(username).setValue(newUser)
+                                        .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                            @Override
+                                            public void onSuccess(Void aVoid) {
+                                                // Operation succeeded
+                                                Toast.makeText(signupActivity.this, "User data added successfully", Toast.LENGTH_SHORT).show();
+
+                                                // Navigate to login activity
+                                                Intent intent = new Intent(signupActivity.this, loginActivity.class);
+                                                startActivity(intent);
+                                                finish();
+                                            }
+                                        })
+                                        .addOnFailureListener(new OnFailureListener() {
+                                            @Override
+                                            public void onFailure(@NonNull Exception e) {
+                                                // Operation failed
+                                                Toast.makeText(signupActivity.this, "Failed to add user data: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                                            }
+                                        });
+
+                            }
                         }
-                    }
 
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-                        // Error handling
-                        Toast.makeText(signupActivity.this, "Error checking username: " + error.getMessage(), Toast.LENGTH_SHORT).show();
-                    }
-                });
-            }
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+                            // Error handling
+                            Toast.makeText(signupActivity.this, "Error checking username: " + error.getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                }
+
+
         });
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
@@ -150,5 +171,12 @@ boolean YesBtn=false;
         btnNo=findViewById(R.id.radioButton2);
         usernametxt=findViewById(R.id.usernametxt);
 
+    }
+    private boolean isValidEmail(String email) {
+        // Regular expression pattern for email validation
+        String emailPattern = "[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}";
+
+        // Validate email using pattern
+        return email.matches(emailPattern);
     }
 }

@@ -44,6 +44,7 @@ public class homepage extends AppCompatActivity {
         });
 
 
+
         Aminusbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -115,6 +116,13 @@ public class homepage extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        chatbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(homepage.this, chatActivity.class);
+                startActivity(intent);
+            }
+        });
 
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
@@ -137,6 +145,8 @@ public class homepage extends AppCompatActivity {
         ABminusbtn=findViewById(R.id.typeABminusbtn);
 
         locationbtn=findViewById(R.id.mapbtn);
+        chatbtn=findViewById(R.id.chatbtn);
+        profilebtn=findViewById(R.id.profilebtn);
 
 
 
@@ -151,8 +161,6 @@ public class homepage extends AppCompatActivity {
             username = intent.getStringExtra("username");
      //    email = intent.getStringExtra("email");
             usernameTxt.setText(username);}
-
-
 
 
 

@@ -56,13 +56,17 @@ public class RecyclerActivity extends AppCompatActivity {
       database.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                userList.clear();
                 for(DataSnapshot dataSnapshot : snapshot.getChildren())
                 {
                     Users user=dataSnapshot.getValue(Users.class);
-                    if (user != null && user.getBloodType() != null && user.getBloodType().equals(bloodtype)) {
+
+
+                 if (user != null && user.getBloodType() != null && user.getBloodType().equals(bloodtype)) {
                         userList.add(user);
                     }
                 }
+
                 userAdapter.notifyDataSetChanged();
 
             }
