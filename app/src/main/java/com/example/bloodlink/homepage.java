@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,6 +21,8 @@ public class homepage extends AppCompatActivity {
     String username,email;
 
     Button Aplusbtn,Aminusbtn,Bplusbtn,Bminusbtn,Oplusbtn,Ominusbtn,ABplusbtn,ABminusbtn;
+
+    ImageButton locationbtn,chatbtn,profilebtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -105,6 +108,13 @@ public class homepage extends AppCompatActivity {
         });
 
 
+        locationbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(homepage.this, MapsActivity.class);
+                startActivity(intent);
+            }
+        });
 
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
@@ -125,6 +135,9 @@ public class homepage extends AppCompatActivity {
         Ominusbtn=findViewById(R.id.typeOminusbtn);
         ABplusbtn=findViewById(R.id.typeABplusbtn);
         ABminusbtn=findViewById(R.id.typeABminusbtn);
+
+        locationbtn=findViewById(R.id.mapbtn);
+
 
 
     }

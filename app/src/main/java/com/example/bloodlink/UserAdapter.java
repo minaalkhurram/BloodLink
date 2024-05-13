@@ -1,6 +1,8 @@
 package com.example.bloodlink;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -42,6 +44,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
 
     public class UserViewHolder extends RecyclerView.ViewHolder {
         TextView usernameTxt, bloodTypeTxt, medTxt;
+        ImageButton chatBtn,callBtn;
 
         public UserViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -56,6 +59,28 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
             bloodTypeTxt.setText(bt);
             String md="Medical Disease : "+user.getmedicalDisease();
             medTxt.setText(String.valueOf(md));
+
+
+            callBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    // Perform call action
+                    Intent callIntent = new Intent(Intent.ACTION_DIAL);
+                    callIntent.setData(Uri.parse("tel:" + user.getConatactNum()));
+                    context.startActivity(callIntent);
+                }
+            });
+
+            // Set click listener for chat button
+            chatBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                  /*  Intent chatIntent = new Intent(context, chatActivity.class);
+
+                    context.startActivity(chatIntent);*/
+                }
+            });
         }
     }
 }

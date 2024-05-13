@@ -71,51 +71,36 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:padding="30px"
+            android:padding="10px"
             android:orientation="vertical">
 
 
             <ImageButton
                 android:id="@+id/callbtn"
                 android:layout_width="wrap_content"
-
+                android:src="@drawable/callicon"
+                android:backgroundTint="@color/lightred"
                 android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+
               >
 
             </ImageButton>
 
-            <TextView
-
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Call"
-                android:textColor="@color/lightbg"
-                android:textAlignment="center"
-
-                android:textSize="10dp">
-
-            </TextView>
 
 
             <ImageButton
                 android:id="@+id/chatbtn"
                 android:layout_width="wrap_content"
-
+                android:src="@drawable/chaticon"
+                android:backgroundTint="@color/lightred"
+                android:layout_margin="10dp"
                 android:layout_height="wrap_content"
                 >
 
             </ImageButton>
 
-            <TextView
 
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Chat"
-                android:textAlignment="center"
-                android:textColor="@color/lightbg"
-                android:textSize="10dp">
-
-            </TextView>
 
 
 
