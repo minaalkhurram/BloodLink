@@ -123,7 +123,7 @@ boolean YesBtn=false;
                                                 Toast.makeText(signupActivity.this, "User data added successfully", Toast.LENGTH_SHORT).show();
 
                                                 // Navigate to login activity
-                                                Intent intent = new Intent(signupActivity.this, loginActivity.class);
+                                                Intent intent = new Intent(signupActivity.this, aboutus.class);
                                                 startActivity(intent);
                                                 finish();
                                             }

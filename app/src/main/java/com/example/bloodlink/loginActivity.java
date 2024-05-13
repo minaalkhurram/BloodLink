@@ -133,7 +133,7 @@ public class loginActivity extends AppCompatActivity {
 
                             intent.putExtra("username",username);
                             startActivity(intent);
-                            finish();
+
                         } else {
                             // Password doesn't match
                             passTxt.setError("Incorrect password");

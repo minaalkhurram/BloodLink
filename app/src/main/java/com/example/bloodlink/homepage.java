@@ -123,6 +123,15 @@ public class homepage extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        profilebtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(homepage.this, profileActivity.class);
+                intent.putExtra("username",username);
+                startActivity(intent);
+
+            }
+        });
 
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
